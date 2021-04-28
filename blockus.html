@@ -38,8 +38,13 @@
 
         // var vrai = { hauteur: 32, largeur: 32, couleur: "RED" };
         var couleur = "red";
+<<<<<<< HEAD
         var posCarreX = 10;
         var posCarreY = 10;
+=======
+        var posCarreX = 5;
+        var posCarreY = 5;
+>>>>>>> 17c1a6de942700590f29d257283173759cfb42f6
         var posX = posCarreX*32;
         var posY = posCarreY*32;
 
@@ -504,6 +509,16 @@
                         context.fillRect(piece18.x + l * 32, piece18.y+k*32,piece18.largeur,piece18.hauteur);
                          
                           
+                    }
+                }
+            }
+            for (k = 0; k < piece18.tab.length; k++) {
+                for (l = 0; l < piece18.tab[0].length; l++) {
+                    if (piece18.tab[k][l] == true) {
+                        context.fillStyle = piece18.couleur;
+                        context.fillRect(piece18.x + k * 32, piece18.y + l * 32, piece18.largeur, piece18.hauteur);
+
+
                     }
                 }
             }
