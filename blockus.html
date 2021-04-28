@@ -1,0 +1,588 @@
+﻿<!doctype html>
+<html>
+    
+
+       <!--  ////////////// HEAD ///////////////////// -->
+    <head>
+           
+    <meta charset="UTF-8">
+    <title>Blockus </title>
+        
+        
+    <script>
+        
+        ////////////////////// LES VAR /////////////////////////////
+        // la référence pour apprendre Javascript facilement :
+        //    http://www.w3schools.com/js/default.asp
+        // le code ci-dessous contient les références aux pages concernées de ce site
+
+        // 2D context : objet dans lequel on va réaliser les dessins (en 2D)
+        // --> voir http://www.w3schools.com/jsref/dom_obj_canvas.asp
+        //  pour connaître les fonctions offertes par cet objet
+
+        // --> voir http://www.html5canvastutorials.com
+        //  pour tout savoir de l'utilisation des canvas
+
+        // --> voir http://www.html5rocks.com/en/tutorials/canvas/performance/
+        //  pour tout savoir sur l'optimisation des performances dans les canvas
+        var context = null;
+
+        // rectangle dans le jeu :
+        // utilisation du format JSON pour définir la structure de cet objet
+        // --> voir http://www.w3schools.com/js/js_json.asp
+        // c'est un format clé: valeur, similaire aux types structurés vu au S2
+        // clic sur la zone de jeu (coordonnées relatives au canvas)
+        var clic = { x: 0, y: 0 };
+        
+         //var faux = { hauteur: 32, largeur: 32, couleur: "" };
+
+        // var vrai = { hauteur: 32, largeur: 32, couleur: "RED" };
+        var couleur = "red";
+        var posX = 0;
+        var posY = 0;
+
+
+        var piece1 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [true, false, false, false, false],
+            ]
+
+        }
+
+        var piece2 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [true, false, false, false, false],
+                [true, false, false, false, false],
+            ]
+
+        }
+
+        var piece3 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [true, false, false, false, false],
+                [true, false, false, false, false],
+                [true, false, false, false, false],
+            ]
+
+        }
+
+        var piece4 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [true, false, false, false, false],
+                [true, true, false, false, false],
+            ]
+
+        }
+
+        var piece5 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [true, false, false, false, false],
+                [true, false, false, false, false],
+                [true, false, false, false, false],
+                [true, false, false, false, false],
+            ]
+
+        }
+
+        var piece6 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [false, true, false, false, false],
+                [false, true, false, false, false],
+                [true, true, false, false, false],
+            ]
+
+        }
+
+        var piece7 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [false, true, false, false, false],
+                [false, true, true, false, false],
+                [false, true, false, false, false],
+            ]
+
+        }
+
+        var piece8 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [true, true, false, false, false],
+                [true, true, false, false, false],
+            ]
+
+        }
+
+        var piece9 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [true, true, false, false, false],
+                [false, true, true, false, false],
+            ]
+
+        }
+
+        var piece10 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [true, false, false, false, false],
+                [true, false, false, false, false],
+                [true, false, false, false, false],
+                [true, false, false, false, false],
+                [true, false, false, false, false],
+            ]
+
+        }
+
+        var piece11 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, true, false, false, false],
+                [false, true, false, false, false],
+                [false, true, false, false, false],
+                [true, true, false, false, false],
+            ]
+
+        }
+
+        var piece12 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, true, false, false, false],
+                [false, true, false, false, false],
+                [true, true, false, false, false],
+                [true, false, false, false, false],
+            ]
+
+        }
+
+        var piece13 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [false, true, false, false, false],
+                [true, true, false, false, false],
+                [true, true, false, false, false],
+            ]
+
+        }
+
+        var piece14 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [true, true, false, false, false],
+                [false, true, false, false, false],
+                [true, true, false, false, false],
+            ]
+
+        }
+
+        var piece15 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [true, false, false, false, false],
+                [true, true, false, false, false],
+                [true, false, false, false, false],
+                [true, false, false, false, false],
+            ]
+
+        }
+
+        var piece16 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [false, true, false, false, false],
+                [false, true, false, false, false],
+                [true, true, true, false, false],
+            ]
+
+        }
+
+        var piece17 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [true, false, false, false, false],
+                [true, false, false, false, false],
+                [true, true, true, false, false],
+            ]
+
+        }
+
+        var piece18 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [true, true, false, false, false],
+                [false, true, true, false, false],
+                [false, false, true, false, false],
+            ]
+
+        }
+
+        var piece19 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [true, false, false, false, false],
+                [true, true, true, false, false],
+                [false, false, true, false, false],
+            ]
+
+        }
+
+        var piece20 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [true, false, false, false, false],
+                [true, true, true, false, false],
+                [false, true, false, false, false],
+            ]
+
+        }
+
+        var piece21 = {
+            x: posX,
+            y: posY,
+            couleur: couleur,
+            hauteur: 32,
+            largeur: 32,
+            tab: [
+                [false, false, false, false, false],
+                [false, false, false, false, false],
+                [false, true, false, false, false],
+                [true, true, true, false, false],
+                [false, true, false, false, false],
+            ]
+
+        }
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //////////////////////FIN DES VAR //////////////////////////////////////
+        
+        ////////////////////// LES FONCTIONS /////////////////////////////////// 
+        
+        
+        /////////////LES FONCTIONS POUR FAIRE FONCTIONNER LE JEU ///////////////
+        
+        // initialisation (appelée au chargement du corps du document <body onload="init">)
+        init = function() {
+         // instanciation de la variable globale contenant le contexte
+            context = document.getElementById("cvs").getContext("2d");
+            context.width = document.getElementById("cvs").width;
+            context.height = document.getElementById("cvs").height;   
+            
+            // on associe au document des écouteurs d'événements
+            // --> voir http://www.w3schools.com/js/js_events.asp
+
+            // 2 écouteurs pour le clavier (appui/relâchement d'une touche)
+            document.addEventListener("keydown", captureAppuiToucheClavier)
+            document.addEventListener("keyup", captureRelacheToucheClavier)
+            // on associe au document un écouteur d'événements souris
+            document.addEventListener("click", captureClicSouris)
+            // --> ces événements vont appeler les fonctions captureXYZ définies après.
+
+            // lancement de la boucle de jeu
+            boucleDeJeu();
+        }
+        
+        
+        
+        
+        
+        
+        boucleDeJeu = function() {
+            // mise à jour de l'état du jeu
+            update(Date.now());
+            // affichage de l'état du jeu
+            render();
+            // rappel de la boucle de jeu
+            // requestAnimationFrame est une fonction JS servant à pré-calculer le prochain affichage
+            //  http://www.html5canvastutorials.com/advanced/html5-canvas-animation-stage/
+            requestAnimationFrame(boucleDeJeu);
+        }
+        
+        
+        
+        
+        
+        
+         /**
+         *  Mise à jour de l'état du jeu
+         *  @param  d   date courante
+         */
+          var lastUpdate = Date.now();
+        
+          update = function(d) {
+              
+              
+              
+              
+           //dernière maj
+            lastUpdate =d;
+          }
+        
+          
+          
+          
+          
+        /**
+         *  Fonction réalisant le rendu de l'état du jeu
+         */
+        render = function() {
+            // effacement de l'écran
+            context.clearRect(0, 0, context.width, context.height);
+            // affichage du quadrillage 
+            
+            for (i=0; i<=context.width; i=i+32){
+             context.beginPath();
+             context.moveTo(i,0);
+             context.lineTo(i,context.height);
+             context.strokeStyle = "black";
+             context.lineWidth = 1;
+             context.stroke(); 
+            }
+            
+            for (j=0; j-1<context.height ; j=j+32){
+             context.beginPath();
+             context.moveTo(0,j);
+             context.lineTo(context.width,j);
+             context.strokeStyle = "black";
+             context.lineWidth = 1;
+             context.stroke();        
+            }
+            
+            for (k=0; k<piece18.tab.length; k++) {
+                for (l= 0; l<piece18.tab[0].length; l++){
+                    if  (piece18.tab[k][l] == true){
+                          context.fillStyle = piece18.couleur; 
+                          context.fillRect(l*32,k*32,piece18.largeur,piece18.hauteur);
+                         
+                          
+                    }
+                }
+            }
+                
+            
+           //dessigner le rectangle
+            //context.fillStyle = piece1.couleur;
+            //context.fillRect(rectangle.x, rectangle.y, rectangle.largeur, rectangle.hauteur);
+            
+            
+            
+        }
+        
+        /////////////FIN DES FONCTIONS POUR FAIRE FONCTIONNER LE JEU ///////////////
+        ///////////////////// LES FONCTIONS HASARD //////////////////
+        
+        
+        harsardIntervalle = function(min, max) {
+            var tire;
+            tire = Math.round(min + (Math.random()*((max - min)+ 1 )));
+            return tire;
+        }
+        
+        //////////////////////// FIN FONCTON HASARD /////////////////////
+        //////////////////////// FONCTION CLAVIER ////////////////////////
+        
+        /**
+         *  Fonction appelée lorsqu'une touche du clavier est appuyée
+         *  Associée à l'événement "keyDown"
+         */
+         captureAppuiToucheClavier = function(event) {
+        // pratique pour connaître les keyCode des touches du clavier :
+        //KeyCode: 39 -> right arrow
+        //KeyCode: 37  -> left arrow
+        //KeyCode : 38 -> up arrow
+        //KeyCode : 40 -> down arrow
+             
+             
+         }
+        
+        
+        
+          /**
+         *  Fonction appelée lorsqu'une touche du clavier est relâchée
+         *  Associée à l'événement "keyUp"
+         */
+         //  --> http://www.cambiaresearch.com/articles/15/javascript-key-codes
+         captureRelacheToucheClavier = function(event) {
+        
+        
+         }
+        
+        
+        
+        ////////////////////////FIN FONCTION CLAVIER ////////////////////
+        ////////////////////// FONCTION SOURIS /////////////////////////
+         /**
+         *  Fonction appelée lorsqu'une touche du clavier est relâchée
+         *  Associée à l'événement "click"
+         */
+       captureClicSouris = function(event) {
+            if (event.target.id == "cvs") {
+                clic.x = event.pageX - event.target.offsetLeft;
+                clic.y = event.pageY - event.target.offsetTop;
+            }
+           
+       }
+        //////////////////////FIN FONCTION SOURIS //////////////////////
+       
+       
+       
+    
+        ////////////////////// FIN DES FONCTION /////////////////////// 
+    </script>
+        
+    </head>
+   <!-- /////////////// FIN HEAD ///////////////////// -->
+    
+   <!-- /////////////// BODY //////////////////// -->
+<body onload="init()">
+
+<canvas id="cvs" width="640" height="640" style="margin: 10px auto; border: solid 1px #000000;">
+        <!-- un petit carre fait 32 par 32-->
+    
+</canvas>
+
+</body>
+    <!-- ///////////////FIN BODY //////////////////// -->
+</html>
