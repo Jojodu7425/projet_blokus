@@ -38,8 +38,8 @@
 
         // var vrai = { hauteur: 32, largeur: 32, couleur: "RED" };
         var couleur = "red";
-        var posCarreX = 0;
-        var posCarreY = -2;
+        var posCarreX = 10;
+        var posCarreY = 10;
         var posX = posCarreX*32;
         var posY = posCarreY*32;
 
@@ -322,13 +322,17 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            draggable: "true",
+            id: "piece18",
+            ondragstart:"drag(event)",
             tab: [
-                [false, false, false, false, false],
-                [false, false, false, false, false],
                 [true, true, false, false, false],
                 [false, true, true, false, false],
                 [false, false, true, false, false],
+                [false, false, false, false, false],
+                [false, false, false, false, false],
             ]
+            
 
         }
 
@@ -496,7 +500,7 @@
             for (k=0; k<piece18.tab.length; k++) {
                 for (l=0; l<piece18.tab[0].length; l++){
                     if  (piece18.tab[k][l] == true){
-                          context.fillStyle = piece18.couleur; 
+                        context.fillStyle = piece18.couleur; 
                         context.fillRect(piece18.x + l * 32, piece18.y+k*32,piece18.largeur,piece18.hauteur);
                          
                           
@@ -566,13 +570,21 @@
                 clic.y = event.pageY - event.target.offsetTop;
             }
             
+           if ( ((clic.x > piece18.x && clic.x < piece18.x + piece18.largeur*2)  && (clic.y > piece18.y && clic.y < piece18.y+piece18.hauteur)) || 
+              ( (clic.x > piece18.x+piece18.largeur && clic.x < piece18.x+piece18.largeur*3)&& (clic.y > piece18.y+piece18.hauteur && clic.y < piece18.y + piece18.hauteur*2))||
+              ( (clic.x > piece18.x+piece18.largeur*2 && clic.x < piece18.x+piece18.largeur*3) && (clic.y > piece18.y+ piece18.hauteur*2 && clic.y < piece18.y+ piece18.hauteur*3) )
+              
+              )  
+           {
+            
+           
+               
+           }
             
            
        }
        
-       
-      
-                    
+   
         //////////////////////FIN FONCTION SOURIS //////////////////////
        
        
@@ -587,7 +599,7 @@
    <!-- /////////////// BODY //////////////////// -->
 <body onload="init()">
 
-<canvas id="cvs" width="640" height="640" style="margin: 10px auto; border: solid 1px #000000;">
+<canvas id="cvs" width="640" height="640" style="margin: 10px auto; border: solid 1px #000000;" ondrop="drop(event)" ondragover="allowDrop(event)">
         <!-- un petit carre fait 32 par 32-->
     
 </canvas>
