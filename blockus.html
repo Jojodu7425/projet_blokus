@@ -38,8 +38,10 @@
 
         // var vrai = { hauteur: 32, largeur: 32, couleur: "RED" };
         var couleur = "red";
-        var posX = 0;
-        var posY = 0;
+        var posCarreX = 0;
+        var posCarreY = -2;
+        var posX = posCarreX*32;
+        var posY = posCarreY*32;
 
 
         var piece1 = {
@@ -489,12 +491,13 @@
              context.lineWidth = 1;
              context.stroke();        
             }
-            
+
+            //affichage pièce 18
             for (k=0; k<piece18.tab.length; k++) {
-                for (l= 0; l<piece18.tab[0].length; l++){
+                for (l=0; l<piece18.tab[0].length; l++){
                     if  (piece18.tab[k][l] == true){
                           context.fillStyle = piece18.couleur; 
-                          context.fillRect(l*32,k*32,piece18.largeur,piece18.hauteur);
+                        context.fillRect(piece18.x + l * 32, piece18.y+k*32,piece18.largeur,piece18.hauteur);
                          
                           
                     }
