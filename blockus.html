@@ -617,12 +617,12 @@
             }
             
             selectionnerPiece(); 
-           {
+           
             if (poser) {
                 poser = false;
             }       
                
-          }
+          
        }
        
 
@@ -859,7 +859,7 @@
 <body onload="init()">
 
 <canvas id="cvs" width="1400" height="640" style="margin: 10px auto; border: solid 1px #000000;" onmousemove="movePiece(event,selectionnerPiece())"
-        ondblclick="doubleClick(piece18)" >
+        ondblclick="doubleClick(selectionnerPiece())" >
         <!-- un petit carre fait 32 par 32-->
     
 </canvas>
