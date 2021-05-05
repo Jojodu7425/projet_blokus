@@ -619,17 +619,16 @@
 
             }
 
-            if (((clic.x > piece18.x && clic.x < piece18.x + piece18.largeur * 2) && (clic.y > piece18.y && clic.y < piece18.y + piece18.hauteur)) ||
-                ((clic.x > piece18.x + piece18.largeur && clic.x < piece18.x + piece18.largeur * 3) && (clic.y > piece18.y + piece18.hauteur && clic.y < piece18.y + piece18.hauteur * 2)) ||
-                ((clic.x > piece18.x + piece18.largeur * 2 && clic.x < piece18.x + piece18.largeur * 3) && (clic.y > piece18.y + piece18.hauteur * 2 && clic.y < piece18.y + piece18.hauteur * 3))
+            selectionnerPiece();
 
-            ) {
-                if (poser) {
-                    poser = false;
-                }
-
-            }
+            if (poser) {
+                poser = false;
+            }      
         }
+
+
+
+
 
 
 
@@ -640,107 +639,251 @@
                     piece.y = e.pageY - e.target.offsetTop;
                 }
             }
-        };
-
-        function doubleClick(piece) {
-            poser = true;
-            piece.lock = true;
         }
+     
+            
+               
+          
+       
+       
+
+       
+     
+        
+>
+      
+
+
         //////////////////////FIN FONCTION SOURIS //////////////////////
 
-        /////////////////////// FONCTION PIECE /////////////////////////
-        /* bougerPiece = function () {
-
-          switch(){
-              case 1:
-
-              break;
-              case 2:
-
-              break;
-              case 3:
-
-              break;
-              case 4:
-
-              break;
-              case 5:
-
-              break;
-              case 6:
-
-              break;
-              case 7:
-
-              break;
-              case 8:
-
-              break;
-              case 9:
-
-              break;
-              case 10:
-
-              break;
-              case 11:
-
-              break;
-              case 12:
-
-              break;
-              case 13:
-
-              break;
-              case 14:
-
-              break;
-              case 15:
-
-              break;
-              case 16:
-
-              break;
-              case 17:
-
-              break;
-              case 18:
-
-              break;
-              case 19:
-
-              break;
-              case 20:
-
-              break;
-              case 21:
-
-              break;
-
-           }
+        function doubleClick(piece) {
+               poser = true;
+               piece.lock = true;
+        }
 
 
 
+     
+     
 
-     }*/
+      
+
+       
+       /////////////////////// FONCTION PIECE /////////////////////////
+        
+        // fonction pour verifier si on clique sur une piece
+        // Si oui, on peut bouger la piece
+          selectionnerPiece = function () {
+             var i = 1;
+             var trouver = false;
+              
+             while (!trouver && i <=21  ) {
+                 if (trouverPiece(i) == true){
+
+                     trouver = true;
 
 
-        // verification si la piece est lock ou pas
-        // si lock est vrai alors la piece ne s'affiche pas a droite de la grille
-        affichagePieceD = function () {
+                 }
+                 else {
+                     
+                     i++;
+                 }
+             
+             
+             
+            
+             }
+              
+             switch(i){
+                 case 1:
+                  return "piece1"
+                 break;
+                 case 2:
+                  return "piece2"        
+                 break;
+                 case 3:
+                  return "piece3"        
+                 break;
+                 case 4:
+                  return "piece4"               
+                 break;
+                 case 5:
+                  return "piece5"        
+                 break;
+                 case 6:
+                  return "piece6"        
+                 break;
+                 case 7:
+                  return "piece7"  
+                 break;
+                 case 8:
+                  return "piece8"           
+                 break;
+                 case 9:
+                    return "piece9"          
+                 break;
+                 case 10:
+                   return "piece10"        
+                 break;
+                 case 11:
+                  return "piece11"        
+                 break;
+                 case 12:
+                     return "piece12"        
+                 break;
+                 case 13:
+                      return "piece13"        
+                 break;
+                 case 14:
+                    return "piece14"        
+                 break;
+                 case 15:
+                     return "piece15"        
+                 break;
+                 case 16:
+                     return "piece16"        
+                 break;
+                 case 17:
+                     return "piece17"        
+                 break;
+                 case 18:
+                       return "piece18"        
+                 break;
+                 case 19:
+                      return "piece19"        
+                 break;
+                 case 20:
+                       return "piece20"        
+                 break;
+                 case 21:
+                       return "piece21"        
+                 break;
 
-            if (piece1.lock || piece2.lock || piece3.lock || piece4.lock || piece5.lock || piece6.lock || piece7.lock || piece8.lock || piece9.lock || piece10.lock || piece10.lock || piece11.lock || piece12.lock || piece13.lock || piece14.lock || piece15.lock || piece16.lock || piece17.lock || piece18.lock || piece19.lock || piece20.lock || piece21.lock) {
-
-
-
-
-            }
+              }
 
 
 
         }
-        /////////////////////// FONCTION PIECE /////////////////////////
+         
 
-        ////////////////////// FIN DES FONCTION ///////////////////////
+
+        
+     
+
+                    
+        // Fonction pour bouger les pieces
+        // On verifie que poser est faux et que la piece n est pas lock
+        movePiece = function(e, piece){
+            if (poser == false && !piece.lock){
+                if (event.target.id == "cvs") {
+                    piece.x = e.pageX - e.target.offsetLeft;
+                    piece.y = e.pageY - e.target.offsetTop;
+                }
+            }            
+        }
+        
+        // Affichage des pieces        
+        // On verifie si la piece est lock ou pas
+        // Si lock est vrai alors la piece ne s'affiche pas a droite de la grille
+        affichagePieceD = function () {
+               
+                if (piece1.lock || piece2.lock || piece3.lock || piece4.lock || piece5.lock || piece6.lock || piece7.lock || piece8.lock || piece9.lock || piece10.lock || piece10.lock || piece11.lock || piece12.lock || piece13.lock || piece14.lock || piece15.lock ||piece16.lock ||piece17.lock || piece18.lock || piece19.lock || piece20.lock ||piece21.lock){
+                    
+                    
+               
+                    
+                }
+                
+                
+                
+        }
+        
+        
+        // Trouver piece
+        // Utilisation de clic.x et clic.y
+        trouverPiece = function (i){
+                var ttt = false;
+                switch (i){
+                case 1:
+                 
+                 break;
+                 case 2:
+                 
+                 break;
+                 case 3:
+                      
+                 break;
+                 case 4:
+                              
+                 break;
+                 case 5:
+                   
+                 break;
+                 case 6:
+                 
+                 break;
+                 case 7:
+                
+                 break;
+                 case 8:
+                 
+                 break;
+                 case 9:
+                   
+                 break;
+                 case 10:
+                     
+                 break;
+                 case 11:
+                    
+                 break;
+                 case 12:
+                          
+                 break;
+                 case 13:
+                       
+                 break;
+                 case 14:
+                    
+                 break;
+                 case 15:
+                    
+                 break;
+                 case 16:
+                    
+                 break;
+                 case 17:
+                           
+                 break;
+                 case 18:
+                       if   ( ((clic.x > piece18.x && clic.x < piece18.x + piece18.largeur*2)  && (clic.y > piece18.y && clic.y < piece18.y+piece18.hauteur)) || 
+                            ( (clic.x > piece18.x+piece18.largeur && clic.x < piece18.x+piece18.largeur*3)&& (clic.y > piece18.y+piece18.hauteur && clic.y < piece18.y + piece18.hauteur*2))       ||
+                            ( (clic.x > piece18.x+piece18.largeur*2 && clic.x < piece18.x+piece18.largeur*3) && (clic.y > piece18.y+ piece18.hauteur*2 && clic.y < piece18.y+ piece18.hauteur*3) ) )  {
+                           
+                           
+                            return ttt = true;    
+                       }
+                 break;
+                 case 19:
+                      
+                 break;
+                 case 20:
+                     
+                 break;
+                 case 21:
+                             
+                 break;
+
+            
+            
+                }
+            
+        }
+        
+         /////////////////////// FONCTION PIECE /////////////////////////
+    
+        ////////////////////// FIN DES FONCTION /////////////////////// 
+
     </script>
         
         
@@ -750,8 +893,8 @@
    <!-- /////////////// BODY //////////////////// -->
 <body onload="init()">
 
-<canvas id="cvs" width="1400" height="640" style="margin: 10px auto; border: solid 1px #000000;" onmousemove="movePiece(event,piece18)"
-        ondblclick="doubleClick(piece18)" >
+<canvas id="cvs" width="1400" height="640" style="margin: 10px auto; border: solid 1px #000000;" onmousemove="movePiece(event,selectionnerPiece())"
+        ondblclick="doubleClick(selectionnerPiece())" >
         <!-- un petit carre fait 32 par 32-->
     
 </canvas>
