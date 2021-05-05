@@ -627,14 +627,7 @@
        
 
        
-        movePiece = function(e, piece){
-            if (poser == false && !piece.lock){
-                if (event.target.id == "cvs") {
-                    piece.x = e.pageX - e.target.offsetLeft;
-                    piece.y = e.pageY - e.target.offsetTop;
-                }
-            }            
-        };
+     
         
         function doubleClick(piece) {
             poser = true;
@@ -715,9 +708,22 @@
 
 
         }
+         
                     
-         // verification si la piece est lock ou pas 
-        // si lock est vrai alors la piece ne s'affiche pas a droite de la grille
+        // Fonction pour bouger les pieces
+        // On verifie que poser est faux et que la piece n est pas lock
+        movePiece = function(e, piece){
+            if (poser == false && !piece.lock){
+                if (event.target.id == "cvs") {
+                    piece.x = e.pageX - e.target.offsetLeft;
+                    piece.y = e.pageY - e.target.offsetTop;
+                }
+            }            
+        }
+        
+        // Affichage des pieces        
+        // On verifie si la piece est lock ou pas
+        // Si lock est vrai alors la piece ne s'affiche pas a droite de la grille
         affichagePieceD = function () {
                
                 if (piece1.lock || piece2.lock || piece3.lock || piece4.lock || piece5.lock || piece6.lock || piece7.lock || piece8.lock || piece9.lock || piece10.lock || piece10.lock || piece11.lock || piece12.lock || piece13.lock || piece14.lock || piece15.lock ||piece16.lock ||piece17.lock || piece18.lock || piece19.lock || piece20.lock ||piece21.lock){
