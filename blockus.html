@@ -656,7 +656,8 @@
 
         //////////////////////FIN FONCTION SOURIS //////////////////////
 
-        function doubleClick(piece) {
+        function doubleClick() {
+            var piece = selectionnerPiece();
                poser = true;
                piece.lock = true;
         }
@@ -773,7 +774,8 @@
                     
         // Fonction pour bouger les pieces
         // On verifie que poser est faux et que la piece n est pas lock
-        movePiece = function(e, piece){
+        movePiece = function(e){
+            var piece = selectionnerPiece();
             if (poser == false && !piece.lock){
                 if (event.target.id == "cvs") {
                     piece.x = e.pageX - e.target.offsetLeft;
@@ -893,8 +895,8 @@
    <!-- /////////////// BODY //////////////////// -->
 <body onload="init()">
 
-<canvas id="cvs" width="1400" height="640" style="margin: 10px auto; border: solid 1px #000000;" onmousemove="movePiece(event,selectionnerPiece())"
-        ondblclick="doubleClick(selectionnerPiece())" >
+<canvas id="cvs" width="1400" height="640" style="margin: 10px auto; border: solid 1px #000000;" onmousemove="movePiece(event)"
+        ondblclick="doubleClick()" >
         <!-- un petit carre fait 32 par 32-->
     
 </canvas>
