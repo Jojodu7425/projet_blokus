@@ -50,6 +50,14 @@
         
         var poser = true; 
         var nomPiece;
+        
+        
+        var joueurR;
+        var joueurV;
+        var joueurJ;
+        var joueurB;
+        
+        
         var piece1 = {
             x: posX,
             y: posY,
@@ -639,7 +647,7 @@
                 
              switch(){
                  case 1:
-                    var pieceABouger = document.getElementById("piece1");
+                  
                  break;
                  case 2:
                      
@@ -708,10 +716,10 @@
 
         }
             
-            affichagePiece = function () {
+        affichagePieceD = function () {
                 // verification si la piece est lock ou pas 
                 // si lock est vrai alors la piece ne s'affiche pas
-                
+                if (piece1.lock || piece2.lock || piece3.lock || piece4.lock || piece5.lock || piece6.lock || piece7.lock )
                 
                 
                 
