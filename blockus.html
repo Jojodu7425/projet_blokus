@@ -10,7 +10,7 @@
         
         
     <script>
-        
+
         ////////////////////// LES VAR /////////////////////////////
         // la référence pour apprendre Javascript facilement :
         //    http://www.w3schools.com/js/default.asp
@@ -33,8 +33,8 @@
         // c'est un format clé: valeur, similaire aux types structurés vu au S2
         // clic sur la zone de jeu (coordonnées relatives au canvas)
         var clic = { x: 0, y: 0 };
-        
-         //var faux = { hauteur: 32, largeur: 32, couleur: "" };
+
+        //var faux = { hauteur: 32, largeur: 32, couleur: "" };
 
         // var vrai = { hauteur: 32, largeur: 32, couleur: "RED" };
         var couleur = "red";
@@ -45,22 +45,24 @@
         var posCarreX = 5;
         var posCarreY = 5;
 
-        var posX = posCarreX*32;
-        var posY = posCarreY*32;
-        
-        var poser = true; 
+        var posX = posCarreX * 32;
+        var posY = posCarreY * 32;
+
+        var poser = true;
         var nomPiece;
-        
-        
+
+
         var joueurR;
         var joueurV;
         var joueurJ;
         var joueurB;
-        
-        
+
+        var m = 100;
+        var h = 100;
+
         var piece1 = {
-            x: 550,
-            y: 32,
+            x: 550 + m,
+            y: 32 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -76,8 +78,8 @@
         }
 
         var piece2 = {
-            x: 625,
-            y: 32,
+            x: 625 + m,
+            y: 32 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -93,8 +95,8 @@
         }
 
         var piece3 = {
-            x: 732,
-            y: 32,
+            x: 732 + m,
+            y: 32 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -110,8 +112,8 @@
         }
 
         var piece4 = {
-            x: 810,
-            y: 32,
+            x: 810 + m,
+            y: 32 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -127,8 +129,8 @@
         }
 
         var piece5 = {
-            x: 950,
-            y: 32,
+            x: 950 + m,
+            y: 32 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -144,8 +146,8 @@
         }
 
         var piece6 = {
-            x: 550,
-            y: 96,
+            x: 614 + m,
+            y: 75 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -161,8 +163,8 @@
         }
 
         var piece7 = {
-            x: 800,
-            y: 32,
+            x: 725 + m,
+            y: 43 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -178,8 +180,8 @@
         }
 
         var piece8 = {
-            x: posX,
-            y: posY,
+            x: 885 + m,
+            y: 75 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -195,8 +197,8 @@
         }
 
         var piece9 = {
-            x: posX,
-            y: posY,
+            x: 800 + m,
+            y: 80 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -212,8 +214,8 @@
         }
 
         var piece10 = {
-            x: posX,
-            y: posY,
+            x: 677 + m,
+            y: 150 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -229,8 +231,8 @@
         }
 
         var piece11 = {
-            x: posX,
-            y: posY,
+            x: 950 + m,
+            y: 118 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -246,8 +248,8 @@
         }
 
         var piece12 = {
-            x: posX,
-            y: posY,
+            x: 755 + m,
+            y: 160 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -263,8 +265,8 @@
         }
 
         var piece13 = {
-            x: posX,
-            y: posY,
+            x: 615 + m,
+            y: 350 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -280,8 +282,8 @@
         }
 
         var piece14 = {
-            x: posX,
-            y: posY,
+            x: 723 + m,
+            y: 237 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -297,8 +299,8 @@
         }
 
         var piece15 = {
-            x: posX,
-            y: posY,
+            x: 896 + m,
+            y: 192 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -314,8 +316,8 @@
         }
 
         var piece16 = {
-            x: posX,
-            y: posY,
+            x: 950 + m,
+            y: 200 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -331,8 +333,8 @@
         }
 
         var piece17 = {
-            x: posX,
-            y: posY,
+            x: 615 + m,
+            y: 192 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -348,8 +350,8 @@
         }
 
         var piece18 = {
-            x: posX,
-            y: posY,
+            x: 890 + m,
+            y: 207 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -362,13 +364,13 @@
                 [false, false, false, false, false],
                 [false, false, false, false, false],
             ]
-            
+
 
         }
 
         var piece19 = {
-            x: posX,
-            y: posY,
+            x: 950 + m,
+            y: 315 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -384,8 +386,8 @@
         }
 
         var piece20 = {
-            x: posX,
-            y: posY,
+            x: 720 + m,
+            y: 315 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -401,8 +403,8 @@
         }
 
         var piece21 = {
-            x: posX,
-            y: posY,
+            x: 840 + m,
+            y: 315 + h,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -417,42 +419,43 @@
 
         }
 
-        
+
         var ttpieces = {
             "piece1": piece1, "piece2": piece2, "piece3": piece3, "piece4": piece4, "piece5": piece5, "piece6": piece6, "piece7": piece7, "piece8": piece8, "piece9": piece9, "piece10": piece10,
-            "piece11": piece11, "piece12": piece12, "piece13": piece13, "piece14": piece14, "piece15": piece15, "piece16": piece16, "piece17": piece17, "piece18": piece18, "piece19": piece19, "piece20": piece20, "piece21": piece21};
+            "piece11": piece11, "piece12": piece12, "piece13": piece13, "piece14": piece14, "piece15": piece15, "piece16": piece16, "piece17": piece17, "piece18": piece18, "piece19": piece19, "piece20": piece20, "piece21": piece21
+        };
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //////////////////////FIN DES VAR //////////////////////////////////////
-        
-        ////////////////////// LES FONCTIONS /////////////////////////////////// 
-        
-        
+
+        ////////////////////// LES FONCTIONS ///////////////////////////////////
+
+
         /////////////LES FONCTIONS POUR FAIRE FONCTIONNER LE JEU ///////////////
-        
+
         // initialisation (appelée au chargement du corps du document <body onload="init">)
-        init = function() {
-         // instanciation de la variable globale contenant le contexte
+        init = function () {
+            // instanciation de la variable globale contenant le contexte
             context = document.getElementById("cvs").getContext("2d");
             context.width = document.getElementById("cvs").width;
-            context.height = document.getElementById("cvs").height;   
-            
+            context.height = document.getElementById("cvs").height;
+
             // on associe au document des écouteurs d'événements
             // --> voir http://www.w3schools.com/js/js_events.asp
 
@@ -461,19 +464,19 @@
             document.addEventListener("keyup", captureRelacheToucheClavier)
             // on associe au document un écouteur d'événements souris
             document.addEventListener("click", captureClicSouris)
-        
+
             // --> ces événements vont appeler les fonctions captureXYZ définies après.
 
             // lancement de la boucle de jeu
             boucleDeJeu();
         }
-        
-        
- 
-        
-        
-        
-        boucleDeJeu = function() {
+
+
+
+
+
+
+        boucleDeJeu = function () {
             // mise à jour de l'état du jeu
             update(Date.now());
             // affichage de l'état du jeu
@@ -483,65 +486,65 @@
             //  http://www.html5canvastutorials.com/advanced/html5-canvas-animation-stage/
             requestAnimationFrame(boucleDeJeu);
         }
-        
-        
-        
-        
-        
-        
-         /**
-         *  Mise à jour de l'état du jeu
-         *  @param  d   date courante
-         */
-          var lastUpdate = Date.now();
-        
-          update = function(d) {
-          //movePiece(event,piece18);      
-              
-              
-              
-           //dernière maj
-            lastUpdate =d;
-          }
-        
-          
-          
-          
-          
+
+
+
+
+
+
+        /**
+        *  Mise à jour de l'état du jeu
+        *  @param  d   date courante
+        */
+        var lastUpdate = Date.now();
+
+        update = function (d) {
+            //movePiece(event,piece18);
+
+
+
+            //dernière maj
+            lastUpdate = d;
+        }
+
+
+
+
+
         /**
          *  Fonction réalisant le rendu de l'état du jeu
          */
-        render = function() {
+        render = function () {
             // effacement de l'écran
             context.clearRect(0, 0, context.width, context.height);
-            // affichage du quadrillage 
-            
-            for (i=0; i<672; i=i+32){
-             context.beginPath();
-             context.moveTo(i,0);
-             context.lineTo(i,context.height);
-             context.strokeStyle = "black";
-             context.lineWidth = 1;
-             context.stroke(); 
+            // affichage du quadrillage
+
+            for (i = 0; i < 672; i = i + 32) {
+                context.beginPath();
+                context.moveTo(i, 0);
+                context.lineTo(i, context.height);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
             }
-            
-            for (j=0; j-1<640; j=j+32){
-             context.beginPath();
-             context.moveTo(0,j);
-             context.lineTo(640,j);
-             context.strokeStyle = "black";
-             context.lineWidth = 1;
-             context.stroke();        
+
+            for (j = 0; j - 1 < 640; j = j + 32) {
+                context.beginPath();
+                context.moveTo(0, j);
+                context.lineTo(640, j);
+                context.strokeStyle = "black";
+                context.lineWidth = 1;
+                context.stroke();
             }
 
             //affichage pièce 18
             /*for (k=0; k<piece18.tab.length; k++) {
                 for (l=0; l<piece18.tab[0].length; l++){
                     if  (piece18.tab[k][l] == true){
-                        context.fillStyle = piece18.couleur; 
+                        context.fillStyle = piece18.couleur;
                         context.fillRect(piece18.x + l * 32, piece18.y+k*32,piece18.largeur,piece18.hauteur);
-                         
-                          
+
+
                     }
                 }
             }*/
@@ -553,7 +556,7 @@
                             context.fillRect(ttpieces["piece" + z].x + k * 32, ttpieces["piece" + z].y + l * 32, ttpieces["piece" + z].largeur, ttpieces["piece" + z].hauteur);
 
                         }
-          
+
 
 
                     }
@@ -561,184 +564,183 @@
             }
 
         }
-        
+
         /////////////FIN DES FONCTIONS POUR FAIRE FONCTIONNER LE JEU ///////////////
         ///////////////////// LES FONCTIONS HASARD //////////////////
-        
-        
-        harsardIntervalle = function(min, max) {
+
+
+        harsardIntervalle = function (min, max) {
             var tire;
-            tire = Math.round(min + (Math.random()*((max - min)+ 1 )));
+            tire = Math.round(min + (Math.random() * ((max - min) + 1)));
             return tire;
         }
-        
+
         //////////////////////// FIN FONCTON HASARD /////////////////////
         //////////////////////// FONCTION CLAVIER ////////////////////////
-        
+
         /**
          *  Fonction appelée lorsqu'une touche du clavier est appuyée
          *  Associée à l'événement "keyDown"
          */
-         captureAppuiToucheClavier = function(event) {
-        // pratique pour connaître les keyCode des touches du clavier :
-        //KeyCode: 39 -> right arrow
-        //KeyCode: 37  -> left arrow
-        //KeyCode : 38 -> up arrow
-        //KeyCode : 40 -> down arrow
-             
-             
-         }
-        
-        
-        
-          /**
-         *  Fonction appelée lorsqu'une touche du clavier est relâchée
-         *  Associée à l'événement "keyUp"
-         */
-         //  --> http://www.cambiaresearch.com/articles/15/javascript-key-codes
-         captureRelacheToucheClavier = function(event) {
-        
-        
-         }
-        
-        
-        
+        captureAppuiToucheClavier = function (event) {
+            // pratique pour connaître les keyCode des touches du clavier :
+            //KeyCode: 39 -> right arrow
+            //KeyCode: 37  -> left arrow
+            //KeyCode : 38 -> up arrow
+            //KeyCode : 40 -> down arrow
+
+
+        }
+
+
+
+        /**
+       *  Fonction appelée lorsqu'une touche du clavier est relâchée
+       *  Associée à l'événement "keyUp"
+       */
+        //  --> http://www.cambiaresearch.com/articles/15/javascript-key-codes
+        captureRelacheToucheClavier = function (event) {
+
+
+        }
+
+
+
         ////////////////////////FIN FONCTION CLAVIER ////////////////////
         ////////////////////// FONCTION SOURIS /////////////////////////
-         /**
-         *  Fonction appelée lorsqu'une touche du clavier est relâchée
-         *  Associée à l'événement "click"
-         */
-       captureClicSouris = function(event) {
+        /**
+        *  Fonction appelée lorsqu'une touche du clavier est relâchée
+        *  Associée à l'événement "click"
+        */
+        captureClicSouris = function (event) {
             if (event.target.id == "cvs") {
                 clic.x = event.pageX - event.target.offsetLeft;
                 clic.y = event.pageY - event.target.offsetTop;
-                
-            }
-            
-           if ( ((clic.x > piece18.x && clic.x < piece18.x + piece18.largeur*2)  && (clic.y > piece18.y && clic.y < piece18.y+piece18.hauteur)) || 
-              ( (clic.x > piece18.x+piece18.largeur && clic.x < piece18.x+piece18.largeur*3)&& (clic.y > piece18.y+piece18.hauteur && clic.y < piece18.y + piece18.hauteur*2))||
-              ( (clic.x > piece18.x+piece18.largeur*2 && clic.x < piece18.x+piece18.largeur*3) && (clic.y > piece18.y+ piece18.hauteur*2 && clic.y < piece18.y+ piece18.hauteur*3) )
-              
-              )  
-           {
-            if (poser) {
-                poser = false;
-            }       
-               
-          }
-       }
-       
 
-       
-        movePiece = function(e, piece){
-            if (poser == false && !piece.lock){
+            }
+
+            if (((clic.x > piece18.x && clic.x < piece18.x + piece18.largeur * 2) && (clic.y > piece18.y && clic.y < piece18.y + piece18.hauteur)) ||
+                ((clic.x > piece18.x + piece18.largeur && clic.x < piece18.x + piece18.largeur * 3) && (clic.y > piece18.y + piece18.hauteur && clic.y < piece18.y + piece18.hauteur * 2)) ||
+                ((clic.x > piece18.x + piece18.largeur * 2 && clic.x < piece18.x + piece18.largeur * 3) && (clic.y > piece18.y + piece18.hauteur * 2 && clic.y < piece18.y + piece18.hauteur * 3))
+
+            ) {
+                if (poser) {
+                    poser = false;
+                }
+
+            }
+        }
+
+
+
+        movePiece = function (e, piece) {
+            if (poser == false && !piece.lock) {
                 if (event.target.id == "cvs") {
                     piece.x = e.pageX - e.target.offsetLeft;
                     piece.y = e.pageY - e.target.offsetTop;
                 }
-            }            
+            }
         };
-        
+
         function doubleClick(piece) {
             poser = true;
             piece.lock = true;
         }
         //////////////////////FIN FONCTION SOURIS //////////////////////
-       
-       /////////////////////// FONCTION PIECE /////////////////////////
-           /* bougerPiece = function () {
-                
-             switch(){
-                 case 1:
-                  
-                 break;
-                 case 2:
-                     
-                 break;
-                 case 3:
-                    
-                 break;
-                 case 4:
-                     
-                 break;
-                 case 5:
-                
-                 break;
-                 case 6:
-                    
-                 break;
-                 case 7:
-                    
-                 break;
-                 case 8:
-                 
-                 break;
-                 case 9:
-                     
-                 break;
-                 case 10:
-                 
-                 break;
-                 case 11:
-                
-                 break;
-                 case 12:
-                   
-                 break;
-                 case 13:
-                    
-                 break;
-                 case 14:
-                  
-                 break;
-                 case 15:
-                   
-                 break;
-                 case 16:
-                   
-                 break;
-                 case 17:
-                   
-                 break;
-                 case 18:
-                     
-                 break;
-                 case 19:
-                    
-                 break;
-                 case 20:
-                     
-                 break;
-                 case 21:
-                     
-                 break;
 
-              }
+        /////////////////////// FONCTION PIECE /////////////////////////
+        /* bougerPiece = function () {
 
+          switch(){
+              case 1:
 
+              break;
+              case 2:
+
+              break;
+              case 3:
+
+              break;
+              case 4:
+
+              break;
+              case 5:
+
+              break;
+              case 6:
+
+              break;
+              case 7:
+
+              break;
+              case 8:
+
+              break;
+              case 9:
+
+              break;
+              case 10:
+
+              break;
+              case 11:
+
+              break;
+              case 12:
+
+              break;
+              case 13:
+
+              break;
+              case 14:
+
+              break;
+              case 15:
+
+              break;
+              case 16:
+
+              break;
+              case 17:
+
+              break;
+              case 18:
+
+              break;
+              case 19:
+
+              break;
+              case 20:
+
+              break;
+              case 21:
+
+              break;
+
+           }
 
 
-        }*/
-     
-                    
-         // verification si la piece est lock ou pas 
+
+
+     }*/
+
+
+        // verification si la piece est lock ou pas
         // si lock est vrai alors la piece ne s'affiche pas a droite de la grille
         affichagePieceD = function () {
-               
-                if (piece1.lock || piece2.lock || piece3.lock || piece4.lock || piece5.lock || piece6.lock || piece7.lock || piece8.lock || piece9.lock || piece10.lock || piece10.lock || piece11.lock || piece12.lock || piece13.lock || piece14.lock || piece15.lock ||piece16.lock ||piece17.lock || piece18.lock || piece19.lock || piece20.lock ||piece21.lock){
-                    
-                    
-                    
-                    
-                }
-                
-                
-                
+
+            if (piece1.lock || piece2.lock || piece3.lock || piece4.lock || piece5.lock || piece6.lock || piece7.lock || piece8.lock || piece9.lock || piece10.lock || piece10.lock || piece11.lock || piece12.lock || piece13.lock || piece14.lock || piece15.lock || piece16.lock || piece17.lock || piece18.lock || piece19.lock || piece20.lock || piece21.lock) {
+
+
+
+
             }
-         /////////////////////// FONCTION PIECE /////////////////////////
-    
-        ////////////////////// FIN DES FONCTION /////////////////////// 
+
+
+
+        }
+        /////////////////////// FONCTION PIECE /////////////////////////
+
+        ////////////////////// FIN DES FONCTION ///////////////////////
     </script>
         
         
