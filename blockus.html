@@ -50,12 +50,21 @@
         
         var poser = true; 
         var nomPiece;
+        
+        
+        var joueurR;
+        var joueurV;
+        var joueurJ;
+        var joueurB;
+        
+        
         var piece1 = {
             x: 550,
             y: 32,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -72,6 +81,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -88,6 +98,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -104,6 +115,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -120,6 +132,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [true, false, false, false, false],
@@ -136,6 +149,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -152,6 +166,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -168,6 +183,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -184,6 +200,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -200,6 +217,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [true, false, false, false, false],
                 [true, false, false, false, false],
@@ -216,6 +234,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, true, false, false, false],
@@ -232,6 +251,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, true, false, false, false],
@@ -248,6 +268,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -264,6 +285,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -280,6 +302,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [true, false, false, false, false],
@@ -296,6 +319,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -312,6 +336,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -347,6 +372,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -363,6 +389,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -379,6 +406,7 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
+            lock: false,
             tab: [
                 [false, false, false, false, false],
                 [false, false, false, false, false],
@@ -441,19 +469,7 @@
         }
         
         
-        bougerPiece = function () {
-
-             switch(nomPiece){
-                 case 1:
-                     
-                 case 2:
-
-
-              }
-
-
-
-        }
+ 
         
         
         
@@ -536,16 +552,14 @@
                             context.fillStyle = ttpieces["piece" + z].couleur;
                             context.fillRect(ttpieces["piece" + z].x + k * 32, ttpieces["piece" + z].y + l * 32, ttpieces["piece" + z].largeur, ttpieces["piece" + z].hauteur);
 
-
                         }
+          
+
+
                     }
                 }
             }
-                
-            
-         
-            
-            
+
         }
         
         /////////////FIN DES FONCTIONS POUR FAIRE FONCTIONNER LE JEU ///////////////
@@ -609,10 +623,7 @@
               )  
            {
             if (poser) {
-                
-                
                 poser = false;
-                
             }       
                
           }
@@ -635,8 +646,89 @@
         }
         //////////////////////FIN FONCTION SOURIS //////////////////////
        
-       
-       
+       /////////////////////// FONCTION PIECE /////////////////////////
+           /* bougerPiece = function () {
+                
+             switch(){
+                 case 1:
+                  
+                 break;
+                 case 2:
+                     
+                 break;
+                 case 3:
+                    
+                 break;
+                 case 4:
+                     
+                 break;
+                 case 5:
+                
+                 break;
+                 case 6:
+                    
+                 break;
+                 case 7:
+                    
+                 break;
+                 case 8:
+                 
+                 break;
+                 case 9:
+                     
+                 break;
+                 case 10:
+                 
+                 break;
+                 case 11:
+                
+                 break;
+                 case 12:
+                   
+                 break;
+                 case 13:
+                    
+                 break;
+                 case 14:
+                  
+                 break;
+                 case 15:
+                   
+                 break;
+                 case 16:
+                   
+                 break;
+                 case 17:
+                   
+                 break;
+                 case 18:
+                     
+                 break;
+                 case 19:
+                    
+                 break;
+                 case 20:
+                     
+                 break;
+                 case 21:
+                     
+                 break;
+
+              }
+
+
+
+        }*/
+            
+        affichagePieceD = function () {
+                // verification si la piece est lock ou pas 
+                // si lock est vrai alors la piece ne s'affiche pas
+            if (piece1.lock || piece2.lock || piece3.lock || piece4.lock || piece5.lock || piece6.lock || piece7.lock) { }
+                
+                
+                
+            }
+         /////////////////////// FONCTION PIECE /////////////////////////
     
         ////////////////////// FIN DES FONCTION /////////////////////// 
     </script>
