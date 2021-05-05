@@ -51,8 +51,8 @@
         var poser = true; 
         var nomPiece;
         var piece1 = {
-            x: posX,
-            y: posY,
+            x: 550,
+            y: 32,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -67,8 +67,8 @@
         }
 
         var piece2 = {
-            x: posX,
-            y: posY,
+            x: 625,
+            y: 32,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -83,8 +83,8 @@
         }
 
         var piece3 = {
-            x: posX,
-            y: posY,
+            x: 732,
+            y: 32,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -99,8 +99,8 @@
         }
 
         var piece4 = {
-            x: posX,
-            y: posY,
+            x: 810,
+            y: 32,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -115,8 +115,8 @@
         }
 
         var piece5 = {
-            x: posX,
-            y: posY,
+            x: 950,
+            y: 32,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -131,8 +131,8 @@
         }
 
         var piece6 = {
-            x: posX,
-            y: posY,
+            x: 550,
+            y: 96,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -147,8 +147,8 @@
         }
 
         var piece7 = {
-            x: posX,
-            y: posY,
+            x: 800,
+            y: 32,
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
@@ -390,6 +390,10 @@
         }
 
         
+        var ttpieces = {
+            "piece1": piece1, "piece2": piece2, "piece3": piece3, "piece4": piece4, "piece5": piece5, "piece6": piece6, "piece7": piece7, "piece8": piece8, "piece9": piece9, "piece10": piece10,
+            "piece11": piece11, "piece12": piece12, "piece13": piece13, "piece14": piece14, "piece15": piece15, "piece16": piece16, "piece17": piece17, "piece18": piece18, "piece19": piece19, "piece20": piece20, "piece21": piece21};
+
         
         
         
@@ -515,7 +519,7 @@
             }
 
             //affichage pièce 18
-            for (k=0; k<piece18.tab.length; k++) {
+            /*for (k=0; k<piece18.tab.length; k++) {
                 for (l=0; l<piece18.tab[0].length; l++){
                     if  (piece18.tab[k][l] == true){
                         context.fillStyle = piece18.couleur; 
@@ -524,17 +528,19 @@
                           
                     }
                 }
-            }
-            /*for (k = 0; k < piece18.tab.length; k++) {
-                for (l = 0; l < piece18.tab[0].length; l++) {
-                    if (piece18.tab[k][l] == true) {
-                        context.fillStyle = piece18.couleur;
-                        context.fillRect(piece18.x + k * 32, piece18.y + l * 32, piece18.largeur, piece18.hauteur);
+            }*/
+            for (z = 1; z <= 21; z++) {
+                for (k = 0; k < ttpieces["piece" + z].tab.length; k++) {
+                    for (l = 0; l < ttpieces["piece" + z].tab[0].length; l++) {
+                        if (ttpieces["piece" + z].tab[k][l] == true) {
+                            context.fillStyle = ttpieces["piece" + z].couleur;
+                            context.fillRect(ttpieces["piece" + z].x + k * 32, ttpieces["piece" + z].y + l * 32, ttpieces["piece" + z].largeur, ttpieces["piece" + z].hauteur);
 
 
+                        }
                     }
                 }
-            }*/
+            }
                 
             
          
