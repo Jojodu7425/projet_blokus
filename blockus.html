@@ -38,17 +38,18 @@
 
         // var vrai = { hauteur: 32, largeur: 32, couleur: "RED" };
         var couleur = "red";
-<<<<<<< HEAD
+
         var posCarreX = 10;
         var posCarreY = 10;
-=======
+
         var posCarreX = 5;
         var posCarreY = 5;
->>>>>>> 17c1a6de942700590f29d257283173759cfb42f6
+
         var posX = posCarreX*32;
         var posY = posCarreY*32;
-
-
+        
+        var poser = true; 
+        var nomPiece;
         var piece1 = {
             x: posX,
             y: posY,
@@ -327,9 +328,8 @@
             couleur: couleur,
             hauteur: 32,
             largeur: 32,
-            draggable: "true",
             id: "piece18",
-            ondragstart:"drag(event)",
+            lock: false,
             tab: [
                 [true, true, false, false, false],
                 [false, true, true, false, false],
@@ -429,6 +429,7 @@
             document.addEventListener("keyup", captureRelacheToucheClavier)
             // on associe au document un écouteur d'événements souris
             document.addEventListener("click", captureClicSouris)
+        
             // --> ces événements vont appeler les fonctions captureXYZ définies après.
 
             // lancement de la boucle de jeu
@@ -436,7 +437,19 @@
         }
         
         
-        
+        bougerPiece = function () {
+
+             switch(nomPiece){
+                 case 1:
+                     
+                 case 2:
+
+
+              }
+
+
+
+        }
         
         
         
@@ -463,7 +476,7 @@
           var lastUpdate = Date.now();
         
           update = function(d) {
-              
+          //movePiece(event,piece18);      
               
               
               
@@ -512,7 +525,7 @@
                     }
                 }
             }
-            for (k = 0; k < piece18.tab.length; k++) {
+            /*for (k = 0; k < piece18.tab.length; k++) {
                 for (l = 0; l < piece18.tab[0].length; l++) {
                     if (piece18.tab[k][l] == true) {
                         context.fillStyle = piece18.couleur;
@@ -521,13 +534,10 @@
 
                     }
                 }
-            }
+            }*/
                 
             
-           //dessigner le rectangle
-            //context.fillStyle = piece1.couleur;
-            //context.fillRect(rectangle.x, rectangle.y, rectangle.largeur, rectangle.hauteur);
-            
+         
             
             
         }
@@ -583,6 +593,7 @@
             if (event.target.id == "cvs") {
                 clic.x = event.pageX - event.target.offsetLeft;
                 clic.y = event.pageY - event.target.offsetTop;
+                
             }
             
            if ( ((clic.x > piece18.x && clic.x < piece18.x + piece18.largeur*2)  && (clic.y > piece18.y && clic.y < piece18.y+piece18.hauteur)) || 
@@ -591,15 +602,31 @@
               
               )  
            {
-            
-           
+            if (poser) {
+                
+                
+                poser = false;
+                
+            }       
                
-           }
-            
-           
+          }
        }
        
-   
+
+       
+        movePiece = function(e, piece){
+            if (poser == false && !piece.lock){
+                if (event.target.id == "cvs") {
+                    piece.x = e.pageX - e.target.offsetLeft;
+                    piece.y = e.pageY - e.target.offsetTop;
+                }
+            }            
+        };
+        
+        function doubleClick(piece) {
+            poser = true;
+            piece.lock = true;
+        }
         //////////////////////FIN FONCTION SOURIS //////////////////////
        
        
@@ -608,16 +635,20 @@
         ////////////////////// FIN DES FONCTION /////////////////////// 
     </script>
         
+        
     </head>
    <!-- /////////////// FIN HEAD ///////////////////// -->
     
    <!-- /////////////// BODY //////////////////// -->
 <body onload="init()">
 
-<canvas id="cvs" width="640" height="640" style="margin: 10px auto; border: solid 1px #000000;" ondrop="drop(event)" ondragover="allowDrop(event)">
+<canvas id="cvs" width="640" height="640" style="margin: 10px auto; border: solid 1px #000000;" onmousemove="movePiece(event,piece18)"
+        ondblclick="doubleClick(piece18)" >
         <!-- un petit carre fait 32 par 32-->
     
 </canvas>
+
+    
 
 </body>
     <!-- ///////////////FIN BODY //////////////////// -->
