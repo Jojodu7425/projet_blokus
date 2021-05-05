@@ -496,7 +496,7 @@
             context.clearRect(0, 0, context.width, context.height);
             // affichage du quadrillage 
             
-            for (i=0; i<=context.width; i=i+32){
+            for (i=0; i<672; i=i+32){
              context.beginPath();
              context.moveTo(i,0);
              context.lineTo(i,context.height);
@@ -505,10 +505,10 @@
              context.stroke(); 
             }
             
-            for (j=0; j-1<context.height ; j=j+32){
+            for (j=0; j-1<640; j=j+32){
              context.beginPath();
              context.moveTo(0,j);
-             context.lineTo(context.width,j);
+             context.lineTo(640,j);
              context.strokeStyle = "black";
              context.lineWidth = 1;
              context.stroke();        
@@ -642,7 +642,7 @@
    <!-- /////////////// BODY //////////////////// -->
 <body onload="init()">
 
-<canvas id="cvs" width="1280" height="640" style="margin: 10px auto; border: solid 1px #000000;" onmousemove="movePiece(event,piece18)"
+<canvas id="cvs" width="1400" height="640" style="margin: 10px auto; border: solid 1px #000000;" onmousemove="movePiece(event,piece18)"
         ondblclick="doubleClick(piece18)" >
         <!-- un petit carre fait 32 par 32-->
     
